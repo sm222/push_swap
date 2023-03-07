@@ -72,7 +72,7 @@ all: $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
 
 bonus: $(BOBJS)
 	ar -rs $(NAME) $(BOBJS)

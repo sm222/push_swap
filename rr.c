@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 17:45:59 by anboisve         ###   ########.fr       */
+/*   Created: 2023/03/07 14:58:58 by anboisve          #+#    #+#             */
+/*   Updated: 2023/03/07 17:59:17 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "lib_ft/libft.h"
-
-typedef struct s_ps
+void	ra(t_ps **a)
 {
-	struct s_ps	*head;
-	int			data;
-	size_t		i;
-	struct s_ps	*next;
+	t_ps	*tmp_top;
+	t_ps	*old_top;
+	t_ps	*last;
+	size_t	size;
 
-}	t_ps;
-
-typedef struct s_piles
-{
-	t_ps	*a;
-	t_ps	*b;
-
-}	t_piles;
-
-size_t	node_len(t_ps *node);
-void	ss(t_ps *a, t_ps *b);
-void	pa(t_ps **a, t_ps **b);
-void	pb(t_ps **a, t_ps **b);
-void	s_p(t_ps *node);
-void	ra(t_ps **a);
-
-#endif 
+	if (*a)
+	{
+		tmp_top = (*a);
+		old_top = (*a);
+		size = node_len(*a);
+		while (--size)
+			tmp_top = tmp_top->next;
+		last = tmp_top;
+		last->next = old_top;
+		(*a) = last;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 11:37:09 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:46:55 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,38 @@ void	make_node_last(t_ps **node, int data)
 	tmp->next = make_node(data);
 }
 
+void	print_pile(t_ps	*data, char name)
+{
+	t_ps	*tmp;
+
+	tmp = data;
+	printf("%c size = %zu\n", name, node_len(tmp));
+	while (tmp)
+	{
+		printf("%d\n", tmp->data);
+		tmp = tmp->next;
+	}
+	printf("\n");
+}
+
 int	main(void)
 {
 	t_piles	piles;
 	int		i;
 
-	i = 0;
+	i = 1;
 	piles.a = NULL;
 	piles.b = NULL;
 	while (i < 6)
 		make_node_last(&piles.a, i++);
-	i = 6;
-	while (i < 11)
-		make_node_last(&piles.b, i++);
-	printf("a size = %zu\n", node_len(piles.a));
-	printf("b size = %zu\n", node_len(piles.b));
+	print_pile(piles.a, 'a');
+	print_pile(piles.b, 'b');
 	ss(piles.a, NULL);
+	//pa(&piles.a, &piles.b);
 	printf("\n");
-	while (piles.a)
-	{
-		printf("a = %d\n", piles.a->data);
-		piles.a = piles.a->next;
-	}
-	printf("\n");
-	while (piles.b)
-	{
-		printf("b = %d\n", piles.b->data);
-		piles.b = piles.b->next;
-	}
+	ra(&piles.a);
+	print_pile(piles.a, 'a');
+	print_pile(piles.b, 'b');
+	//pb(&piles.a, &piles.b);
 	return (0);
 }

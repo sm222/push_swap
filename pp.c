@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   pp.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 17:45:59 by anboisve         ###   ########.fr       */
+/*   Created: 2023/03/07 12:22:52 by anboisve          #+#    #+#             */
+/*   Updated: 2023/03/07 14:49:04 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "lib_ft/libft.h"
-
-typedef struct s_ps
+void	pa(t_ps **a, t_ps **b)
 {
-	struct s_ps	*head;
-	int			data;
-	size_t		i;
-	struct s_ps	*next;
+	t_ps	*tmp_a;
+	t_ps	*tmp_b;
 
-}	t_ps;
+	if (*b != NULL)
+	{
+		tmp_b = (*b)->next;
+		tmp_a = (*a);
+		(*a) = (*b);
+		(*a)->next = tmp_a;
+		(*b) = tmp_b;
+	}
+}
 
-typedef struct s_piles
+void	pb(t_ps **a, t_ps **b)
 {
-	t_ps	*a;
-	t_ps	*b;
+	t_ps	*tmp_a;
+	t_ps	*tmp_b;
 
-}	t_piles;
-
-size_t	node_len(t_ps *node);
-void	ss(t_ps *a, t_ps *b);
-void	pa(t_ps **a, t_ps **b);
-void	pb(t_ps **a, t_ps **b);
-void	s_p(t_ps *node);
-void	ra(t_ps **a);
-
-#endif 
+	if (*a != NULL)
+	{
+		tmp_a = (*a)->next;
+		tmp_b = (*b);
+		(*b) = (*a);
+		(*b)->next = tmp_b;
+		(*a) = tmp_a;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 17:46:55 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:01:58 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,30 @@ void	print_pile(t_ps	*data, char name)
 	printf("\n");
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	t_piles	piles;
-	int		i;
+	t_piles		piles;
+	int			i;
+	long		big;
 
-	i = 1;
+	big = LONG_MAX;
+	i = 0;
 	piles.a = NULL;
 	piles.b = NULL;
-	while (i < 6)
-		make_node_last(&piles.a, i++);
-	print_pile(piles.a, 'a');
-	print_pile(piles.b, 'b');
-	ss(piles.a, NULL);
-	//pa(&piles.a, &piles.b);
-	printf("\n");
-	ra(&piles.a);
-	print_pile(piles.a, 'a');
-	print_pile(piles.b, 'b');
-	//pb(&piles.a, &piles.b);
+	while (++i < ac)
+		make_node_last(&piles.a, ft_atoi(av[i]));
+	while (node_len(piles.a))
+	{
+		if (big == piles.a->data)
+		{
+			big = LONG_MAX;
+			pb(&piles.a, &piles.b);
+		}
+		else if (big > piles.a->data)
+			big = piles.a->data;
+		rr(&piles.a, NULL);
+	}
+	while (node_len(piles.b))
+		pa(&piles.a, &piles.b);
 	return (0);
 }

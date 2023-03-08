@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 17:45:59 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:02:27 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "lib_ft/libft.h"
+# include <limits.h>
 
 typedef struct s_ps
 {
@@ -36,6 +37,7 @@ void	ss(t_ps *a, t_ps *b);
 void	pa(t_ps **a, t_ps **b);
 void	pb(t_ps **a, t_ps **b);
 void	s_p(t_ps *node);
-void	ra(t_ps **a);
+void	rr(t_ps **a, t_ps **b);
+int		r_r(t_ps **p);
 
 #endif 

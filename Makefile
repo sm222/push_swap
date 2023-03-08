@@ -55,16 +55,10 @@ fclean: clean
 	@echo $(shell clear) $(GRN) clean all$(RESET)
 
 run: all
-	@./$(NAME)
+	@./$(NAME) 1 2 4 5
 
-mc: all clean
-	@./pipex
-
-mem:
-	valgrind -s ./pipex logo.txt "cat" wc out
-
-mem2:
-	leaks -atExit -- ./pipex logo.txt "cat" wc out
+vis: all
+	./push_swap_visualizer/build/bin/visualizer
 # Removes objects and executables and remakes
 re: fclean all
 

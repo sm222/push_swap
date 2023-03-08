@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:22:52 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/07 14:49:04 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:18:14 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	pa(t_ps **a, t_ps **b)
 		(*a) = (*b);
 		(*a)->next = tmp_a;
 		(*b) = tmp_b;
+		ft_putendl_fd("pa", 1);
 	}
 }
 
@@ -32,12 +33,13 @@ void	pb(t_ps **a, t_ps **b)
 	t_ps	*tmp_a;
 	t_ps	*tmp_b;
 
-	if (*a != NULL)
+	if (a && *a)
 	{
 		tmp_a = (*a)->next;
 		tmp_b = (*b);
 		(*b) = (*a);
 		(*b)->next = tmp_b;
 		(*a) = tmp_a;
+		ft_putendl_fd("pb", 1);
 	}
 }

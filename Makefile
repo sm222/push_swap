@@ -24,6 +24,9 @@ RM	=	rm	-f
 SRCS	=	pp.c\
 			sa.c\
 			rr.c\
+			utilse.c\
+			tools.c\
+			rrr.c\
 			main.c
 
 OBJS	=	$(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:58:58 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/08 14:28:11 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:01:28 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,11 @@ int	r_r(t_ps **p)
 {
 	t_ps	*new_top;
 	t_ps	*last;
-	size_t	size;
 
 	if (*p && (*p)->next)
 	{
 		new_top = (*p)->next;
-		last = (*p);
-		size = node_len((*p));
-		while (--size)
-			last = last->next;
+		last = return_last_node((p));
 		last->next = (*p);
 		(*p)->next = NULL;
 		(*p) = new_top;

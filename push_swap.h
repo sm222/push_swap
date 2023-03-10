@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 16:36:28 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:28:46 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "lib_ft/libft.h"
 # include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_ps
 {
 	struct s_ps	*head;
 	int			data;
+	int			chek;
 	size_t		i;
 	struct s_ps	*next;
 
@@ -44,5 +46,8 @@ void	rrr(t_ps **a, t_ps **b);
 void	print_pile(t_ps	*data, char name);
 void	pp(t_ps **src, t_ps **dst, char *cmd);
 t_ps	*make_node(int data);
+void	make_node_last(t_ps **node, int data);
+void	bot_or_up(t_ps **head, int i);
+size_t	find_node_i(t_ps *head, size_t i);
 
 #endif 

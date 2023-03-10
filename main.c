@@ -6,51 +6,82 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 17:28:29 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:49:23 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	make_node_last(t_ps **node, int data)
+void	pile_set_index(t_ps **head)
 {
-	size_t	size;
+	t_ps	*tmp;
+	int		small;
+	size_t	i;
+
+	i = 0;
+	tmp = (*head);
+	small = INT32_MAX;
+	while (i < node_len(tmp))
+	{
+		while (tmp)
+		{
+			if (tmp->chek == 0 && tmp->data == small)
+			{
+				tmp->chek = 1;
+				small = INT32_MAX;
+				tmp->i = ++i;
+			}
+			else if (tmp->chek == 0 && tmp->data < small)
+				small = tmp->data;
+			tmp = tmp->next;
+		}
+		tmp = (*head);
+	}
+}
+
+int	look_rest(t_ps **head)
+{
 	t_ps	*tmp;
 
-	size = node_len(*node);
-	if (size == 0)
+	tmp = (*head);
+	while (tmp)
 	{
-		(*node) = make_node(data);
-		return ;
+		if (tmp->next)
+		{
+			if (tmp->i < tmp->next->i)
+				tmp = tmp->next;
+			else
+				return (0);
+		}
+		else
+			break ;
 	}
-	tmp = (*node);
-	while (--size)
-		tmp = tmp->next;
-	tmp->next = make_node(data);
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
 	t_piles		piles;
 	int			i;
-	long		big;
 
-	big = LONG_MAX;
 	i = 0;
 	piles.a = NULL;
 	piles.b = NULL;
 	while (++i < ac)
 		make_node_last(&piles.a, ft_atoi(av[i]));
+	pile_set_index(&piles.a);
+	i = 1;
 	while (node_len(piles.a))
 	{
-		if (big == piles.a->data)
+		if (look_rest(&piles.a))
+			break ;
+		if (piles.a->i == (size_t)i)
 		{
-			big = LONG_MAX;
 			pp(&piles.a, &piles.b, "pb");
+			i++;
+			continue ;
 		}
-		else if (big > piles.a->data)
-			big = piles.a->data;
-		rr(&piles.a, NULL);
+		bot_or_up(&piles.a, i);
 	}
 	while (node_len(piles.b))
 		pp(&piles.b, &piles.a, "pa");

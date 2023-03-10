@@ -22,11 +22,13 @@ RM	=	rm	-f
 #--recurse-submodules
 # Sources are all .c files
 SRCS	=	pp.c\
-			sa.c\
+			ss.c\
 			rr.c\
 			utilse.c\
 			tools.c\
 			rrr.c\
+			node.c\
+			algo.c\
 			main.c
 
 OBJS	=	$(SRCS:.c=.o)

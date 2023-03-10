@@ -6,27 +6,11 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 16:36:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:28:40 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-size_t	node_len(t_ps *node)
-{
-	size_t	size;
-
-	size = 1;
-	if (!node)
-		return (0);
-	while (node)
-	{
-		node = node->next;
-		if (node)
-			size++;
-	}
-	return (size);
-}
 
 t_ps	*return_index_node(t_ps **head, size_t i)
 {
@@ -64,11 +48,19 @@ t_ps	*return_last_node(t_ps **head)
 	return (NULL);
 }
 
-t_ps	*make_node(int data)
+size_t	find_node_i(t_ps *head, size_t i)
 {
+	size_t	index;
 	t_ps	*tmp;
 
-	tmp = ft_calloc(1, sizeof(t_ps));
-	tmp->data = data;
-	return (tmp);
+	tmp = head;
+	index = 0;
+	while (tmp)
+	{
+		if (tmp->i == i)
+			return (index);
+		tmp = tmp->next;
+		index++;
+	}
+	return (0);
 }

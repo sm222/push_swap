@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/10 13:49:23 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:42:29 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pile_set_index(t_ps **head)
+size_t	pile_set_index(t_ps **head)
 {
 	t_ps	*tmp;
 	int		small;
@@ -37,9 +37,10 @@ void	pile_set_index(t_ps **head)
 		}
 		tmp = (*head);
 	}
+	return (i);
 }
 
-int	look_rest(t_ps **head)
+int	look_rest_a(t_ps **head)
 {
 	t_ps	*tmp;
 
@@ -62,6 +63,7 @@ int	look_rest(t_ps **head)
 int	main(int ac, char **av)
 {
 	t_piles		piles;
+	size_t		ammount;
 	int			i;
 
 	i = 0;
@@ -69,11 +71,11 @@ int	main(int ac, char **av)
 	piles.b = NULL;
 	while (++i < ac)
 		make_node_last(&piles.a, ft_atoi(av[i]));
-	pile_set_index(&piles.a);
+	ammount = pile_set_index(&piles.a);
 	i = 1;
 	while (node_len(piles.a))
 	{
-		if (look_rest(&piles.a))
+		if (look_rest_a(&piles.a))
 			break ;
 		if (piles.a->i == (size_t)i)
 		{

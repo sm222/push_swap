@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/10 13:28:40 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/12 15:27:11 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_ps	*return_index_node(t_ps **head, size_t i)
 	{
 		tmp = (*head);
 		size = node_len(tmp);
+		if (size == 0)
+			return (NULL);
 		while (--size && --i)
 			tmp = tmp->next;
 		return (tmp);

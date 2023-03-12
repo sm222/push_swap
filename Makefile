@@ -67,4 +67,7 @@ vis: all
 # Removes objects and executables and remakes
 re: fclean all
 
+test:
+	./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+
 .PHONY: all libft

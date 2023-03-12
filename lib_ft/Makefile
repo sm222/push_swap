@@ -52,7 +52,8 @@ SRCS	=	ft_atoi.c\
 			ft_put_hex.c\
 			ft_put_p.c\
 			ft_put_u.c\
-			ft_ulltoa.c
+			ft_ulltoa.c\
+			ft_sqrt.c
 
 OBJS	=	$(SRCS:.c=.o)
 # BSources are all .c files

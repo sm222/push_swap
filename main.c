@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/10 17:42:29 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:44:55 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,52 +40,72 @@ size_t	pile_set_index(t_ps **head)
 	return (i);
 }
 
-int	look_rest_a(t_ps **head)
+// ac / 5
+
+void	find_next_b(t_ps **b, size_t i)
 {
+	size_t	look;
+	size_t	size_node;
+
+	look = find_node_i((*b), i);
+	size_node = node_len((*b)) / 2;
+	if (look <= size_node)
+	{
+		rr(NULL, b);
+	}
+	else
+	{
+		rrr(NULL, b);
+	}
+}
+
+size_t	find_next_big(t_ps **head)
+{
+	size_t	i;
 	t_ps	*tmp;
 
+	i = 0;
 	tmp = (*head);
 	while (tmp)
 	{
-		if (tmp->next)
-		{
-			if (tmp->i < tmp->next->i)
-				tmp = tmp->next;
-			else
-				return (0);
-		}
-		else
-			break ;
+		if (i < tmp->i)
+			i = tmp->i;
+		tmp = tmp->next;
 	}
-	return (1);
+	return (i);
+}
+
+void	b_to_a(t_ps **a, t_ps **b, size_t size)
+{
+	while (node_len(*b))
+	{
+		if ((*b)->i == size)
+		{
+			pp(b, a, "pa");
+			size = find_next_big((b));
+			continue ;
+		}
+		size = find_next_big((b));
+		find_next_b(b, size);
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_piles		piles;
-	size_t		ammount;
 	int			i;
+	size_t		item;
 
 	i = 0;
 	piles.a = NULL;
 	piles.b = NULL;
 	while (++i < ac)
 		make_node_last(&piles.a, ft_atoi(av[i]));
-	ammount = pile_set_index(&piles.a);
-	i = 1;
-	while (node_len(piles.a))
-	{
-		if (look_rest_a(&piles.a))
-			break ;
-		if (piles.a->i == (size_t)i)
-		{
-			pp(&piles.a, &piles.b, "pb");
-			i++;
-			continue ;
-		}
-		bot_or_up(&piles.a, i);
-	}
-	while (node_len(piles.b))
-		pp(&piles.b, &piles.a, "pa");
+	item = pile_set_index(&piles.a);
+	if (ac < 100)
+		make_bucket(&piles.a, &piles.b, 1, item);
+	else
+		make_bucket(&piles.a, &piles.b, ac / 10, item);
+	b_to_a(&piles.a, &piles.b, item);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:22:05 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 13:10:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:54:23 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	rrr(t_ps **a, t_ps **b)
 		if (r_top(a))
 			ft_putendl_fd("rra", 1);
 	}
-	else if (a)
+	else if (b)
 	{
-		if (r_top(a))
-			ft_putendl_fd("rra", 1);
+		if (r_top(b))
+			ft_putendl_fd("rrb", 1);
 	}
 }

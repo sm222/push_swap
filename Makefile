@@ -29,6 +29,7 @@ SRCS	=	pp.c\
 			rrr.c\
 			node.c\
 			algo.c\
+			algo_small.c\
 			main.c
 
 OBJS	=	$(SRCS:.c=.o)
@@ -59,8 +60,8 @@ fclean: clean
 	@$(RM) $(LDIR)$(LIBFT)
 	@echo $(shell clear) $(GRN) clean all$(RESET)
 
-run: all
-	@./$(NAME) 1 2 4 5
+run:
+	leaks --atExit -- ./push_swap 4 2 1 5 0
 
 vis: all
 	./push_swap_visualizer/build/bin/visualizer
@@ -68,6 +69,17 @@ vis: all
 re: fclean all
 
 test:
-	./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@echo "10 tests/ 0 - 500"
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@echo "/	/	/	/	/"
 
 .PHONY: all libft

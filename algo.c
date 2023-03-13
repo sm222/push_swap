@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/12 16:10:34 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:11:59 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	find_next_small(t_ps **head)
 	size_t	i;
 	t_ps	*tmp;
 
-	i = SIZE_T_MAX;
+	i = -1;
 	tmp = (*head);
 	while (tmp)
 	{
@@ -41,7 +41,7 @@ int	look_rest_a(t_ps **head, size_t last)
 				tmp = tmp->next;
 			else
 				return (0);
-			if (tmp->i == last)
+			if (tmp->i == last && tmp->next == NULL)
 				return (1);
 		}
 		else
@@ -54,29 +54,36 @@ void	bot_or_up_a(t_ps **a, t_ps **b, int i)
 {
 	size_t			look;
 	size_t			size_node;
+	t_ps			*tmp;
+	static size_t	range = 5;
 
+	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
 	size_node = node_len((*a)) / 2;
 	if (look <= size_node)
 	{
-		if ((*b) && (*b)->next && (*b)->i < (*b)->next->i)
-		{
+		if ((*b) && (*b)->next && (*b)->i < (*b)->next->i && \
+		(*b)->i < range && (*b)->next->i < range)
 			rr(a, b);
-		}
 		else
 			rr(a, NULL);
 	}
 	else
 	{
-		rrr(a, NULL);
+		if ((*b) && tmp && (*b)->i < tmp->i && \
+		(*b)->i < range && tmp->i < range)
+			rrr(a, b);
+		else
+			rrr(a, NULL);
 	}
+	range++;
 }
 
 void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last)
 {
 	size_t	i;
 
-	i = 0;
+	i = find_next_small(a);
 	while (node_len(*a))
 	{
 		if (look_rest_a(a, last))

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/12 17:44:55 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:47:34 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,15 @@ int	main(int ac, char **av)
 	while (++i < ac)
 		make_node_last(&piles.a, ft_atoi(av[i]));
 	item = pile_set_index(&piles.a);
-	if (ac < 100)
+	if (ac < 10)
+		small_algo(&piles, item);
+	else if (ac < 100)
 		make_bucket(&piles.a, &piles.b, 1, item);
-	else
+	else if (ac < 300)
 		make_bucket(&piles.a, &piles.b, ac / 10, item);
+	else
+		make_bucket(&piles.a, &piles.b, ac / 13, item);
 	b_to_a(&piles.a, &piles.b, item);
+	free_node(&piles.a, &piles.b);
 	return (0);
 }

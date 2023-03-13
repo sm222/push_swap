@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:22:07 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/10 13:23:42 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:44:29 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ void	make_node_last(t_ps **node, int data)
 	if (size == 0)
 	{
 		(*node) = make_node(data);
+		if (!*node)
+			exit(1);
 		return ;
 	}
 	tmp = (*node);
 	while (--size)
 		tmp = tmp->next;
 	tmp->next = make_node(data);
+	if (!tmp->next)
+		free_node(node, NULL);
 }

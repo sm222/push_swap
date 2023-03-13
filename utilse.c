@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/12 15:27:11 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:42:28 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,26 @@ size_t	find_node_i(t_ps *head, size_t i)
 		index++;
 	}
 	return (0);
+}
+
+void	free_node(t_ps **a, t_ps **b)
+{
+	t_ps	*tmp;
+	t_ps	*next;
+
+	tmp = (*a);
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	tmp = (*b);
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	exit(0);
 }

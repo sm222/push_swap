@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/13 14:11:59 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:48:32 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	bot_or_up_a(t_ps **a, t_ps **b, int i)
 	size_t			look;
 	size_t			size_node;
 	t_ps			*tmp;
-	static size_t	range = 5;
+	static size_t	range = 3;
 
 	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
 	size_node = node_len((*a)) / 2;
 	if (look <= size_node)
 	{
-		if ((*b) && (*b)->next && (*b)->i < (*b)->next->i && \
-		(*b)->i < range && (*b)->next->i < range)
+		if ((*b) && tmp && (*b)->i > tmp->i && \
+		(*b)->i < range && tmp->i < range)
 			rr(a, b);
 		else
 			rr(a, NULL);
@@ -95,5 +95,6 @@ void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last)
 			continue ;
 		}
 		bot_or_up_a(a, b, i);
+		//rr(a, NULL);
 	}
 }

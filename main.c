@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/13 17:47:34 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:20:40 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ size_t	find_next_big(t_ps **head)
 
 void	b_to_a(t_ps **a, t_ps **b, size_t size)
 {
+	size = find_next_big((b));
 	while (node_len(*b))
 	{
 		if ((*b)->i == size)
@@ -109,7 +110,7 @@ int	main(int ac, char **av)
 	else if (ac < 300)
 		make_bucket(&piles.a, &piles.b, ac / 10, item);
 	else
-		make_bucket(&piles.a, &piles.b, ac / 13, item);
+		make_bucket(&piles.a, &piles.b, ac / 16, item);
 	b_to_a(&piles.a, &piles.b, item);
 	free_node(&piles.a, &piles.b);
 	return (0);

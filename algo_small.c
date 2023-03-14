@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:40:21 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/13 17:59:15 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:53:16 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	item_3(t_ps **a)
 	else if ((*a)->i > (*a)->next->i && (*a)->next->i < (*a)->next->next->i)
 	{
 		ss(a, NULL);
+	}
+	else if ((*a)->i == 1 && (*a)->next->i == 3 && (*a)->next->next->i == 2)
+	{
+		ss(a, NULL);
+		rrr(a, NULL);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/13 17:48:36 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:48:53 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	bot_or_up_a(t_ps **a, t_ps **b, int i);
 size_t	find_node_i(t_ps *head, size_t i);
 void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last);
 void	free_node(t_ps **a, t_ps **b);
-void	small_algo(t_piles *data, size_t item);
+void	small_algo(t_piles *piles, size_t item);
+int		look_rest_a(t_ps **head, size_t last);
 
 #endif 

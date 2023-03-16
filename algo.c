@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/14 13:48:32 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:57:36 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	bot_or_up_a(t_ps **a, t_ps **b, int i)
 	size_t			look;
 	size_t			size_node;
 	t_ps			*tmp;
-	static size_t	range = 3;
+	static size_t	range = 20;
 
 	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
@@ -63,7 +63,7 @@ void	bot_or_up_a(t_ps **a, t_ps **b, int i)
 	if (look <= size_node)
 	{
 		if ((*b) && tmp && (*b)->i > tmp->i && \
-		(*b)->i < range && tmp->i < range)
+		(*b)->i < range < range && tmp->i < range)
 			rr(a, b);
 		else
 			rr(a, NULL);
@@ -88,13 +88,12 @@ void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last)
 	{
 		if (look_rest_a(a, last))
 			break ;
-		if ((*a)->i >= (size_t)i && (*a)->i <= (size_t)i + bucket)
+		if ((*a)->i >= (size_t)i && (*a)->i <= (size_t)i + bucket + 5)
 		{
 			pp(a, b, "pb");
 			i = find_next_small(a);
 			continue ;
 		}
 		bot_or_up_a(a, b, i);
-		//rr(a, NULL);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/14 14:20:40 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:57:24 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 size_t	pile_set_index(t_ps **head)
 {
-	t_ps	*tmp;
-	int		small;
-	size_t	i;
+	t_ps		*tmp;
+	long		small;
+	size_t		i;
 
 	i = 0;
 	tmp = (*head);
-	small = INT32_MAX;
+	small = 2147483648;
 	while (i < node_len(tmp))
 	{
 		while (tmp)
@@ -28,7 +28,7 @@ size_t	pile_set_index(t_ps **head)
 			if (tmp->chek == 0 && tmp->data == small)
 			{
 				tmp->chek = 1;
-				small = INT32_MAX;
+				small = 2147483648;
 				tmp->i = ++i;
 			}
 			else if (tmp->chek == 0 && tmp->data < small)
@@ -97,20 +97,22 @@ int	main(int ac, char **av)
 	int			i;
 	size_t		item;
 
-	i = 0;
+	i = 1;
 	piles.a = NULL;
 	piles.b = NULL;
-	while (++i < ac)
-		make_node_last(&piles.a, ft_atoi(av[i]));
+	if (ac == 2)
+		av = ft_split(av[i--], ' ');
+	while (av[i])
+		make_node_last(&piles.a, ft_atoi(av[i++]));
 	item = pile_set_index(&piles.a);
-	if (ac < 10)
+	if (item <= 5)
 		small_algo(&piles, item);
-	else if (ac < 100)
+	else if (item < 100)
 		make_bucket(&piles.a, &piles.b, 1, item);
-	else if (ac < 300)
-		make_bucket(&piles.a, &piles.b, ac / 10, item);
+	else if (item < 300)
+		make_bucket(&piles.a, &piles.b, item / 6, item);
 	else
-		make_bucket(&piles.a, &piles.b, ac / 16, item);
+		make_bucket(&piles.a, &piles.b, item / 16, item);
 	b_to_a(&piles.a, &piles.b, item);
 	free_node(&piles.a, &piles.b);
 	return (0);

@@ -52,5 +52,7 @@ Mkfile.old
 dkms.conf
 
 #tester
+push_swap/push_swap_visualizer/
+push_swap/push_swap_tester/
 push_swap_visualizer/
 push_swap_tester/

@@ -6,11 +6,24 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 10:03:24 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:11:31 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	find_next_b(t_pile **b, size_t i)
+{
+	size_t	look;
+	size_t	size_node;
+
+	look = find_node_i((*b), i);
+	size_node = node_len((*b)) / 2;
+	if (look <= size_node)
+		rr(NULL, b);
+	else
+		rrr(NULL, b);
+}
 
 size_t	find_next_small(t_pile **head)
 {

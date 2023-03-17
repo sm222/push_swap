@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 12:41:39 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:12:18 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_pile	*return_index_node(t_pile **head, size_t i);
 
 //algo
 size_t	find_next_big(t_pile **head);
+void	find_next_b(t_pile **b, size_t i);
 void	small_algo(t_piles *piles, size_t item);
 int		look_rest_a(t_pile **head, size_t last);
 void	move_piles(t_pile **a, t_pile **b, int i);

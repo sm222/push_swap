@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 12:33:18 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:49:00 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,6 @@ size_t	t_pile_set_index(t_pile **head)
 	return (i);
 }
 
-// ac / 5
-
-void	find_next_b(t_pile **b, size_t i)
-{
-	size_t	look;
-	size_t	size_node;
-
-	look = find_node_i((*b), i);
-	size_node = node_len((*b)) / 2;
-	if (look <= size_node)
-		rr(NULL, b);
-	else
-		rrr(NULL, b);
-}
-
-
-
 void	b_to_a(t_pile **a, t_pile **b, size_t size)
 {
 	size = find_next_big((b));
@@ -73,20 +56,52 @@ void	b_to_a(t_pile **a, t_pile **b, size_t size)
 	}
 }
 
+int	look_for_number(char **numbers)
+{
+	size_t	y;
+	size_t	x;
+
+	y = 0;
+	while (numbers[y])
+	{
+		x = 0;
+		while (numbers[y][x])
+		{
+			if (!ft_isdigit(numbers[y][x]))
+				return (0);
+			else
+				x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
+void	verif(t_data *data, int ac, char ***av)
+{
+	if (ac < 2)
+		exit(0);
+	data->i = 1;
+	data->numbers = ft_split((*av)[1], ' ');
+	if (ac == 2)
+	{
+		(*av) = data->numbers;
+		data->i--;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_piles		t_piles;
 	t_data		data;
 
-	data.i = 1;
 	t_piles.a = NULL;
 	t_piles.b = NULL;
-	if (ac <= 2)
-		return (0);
-	if (ac == 2)
-		data.numbers = ft_split(av[1], ' ');
+	verif(&data, ac, &av);
 	while (av[data.i])
+	{
 		make_node_last(&t_piles.a, ft_atoi(av[data.i++]));
+	}
 	data.item = t_pile_set_index(&t_piles.a);
 	if (data.item <= 5)
 		small_algo(&t_piles, data.item);

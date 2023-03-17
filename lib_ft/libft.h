@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:07:18 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/12 17:25:53 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:34:32 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		ft_isascii(int c);
 int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isprint(int c);
+int		ft_isspace(int c);
 
 //char				\modify
 

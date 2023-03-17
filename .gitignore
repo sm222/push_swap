@@ -12,7 +12,7 @@
 *.map
 *.exp
 
-# Precompiled Headers
+# Precomt_piled Headers
 *.gch
 *.pch
 
@@ -42,7 +42,7 @@
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
+# Kernel Module Comt_pile Results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#tester
+push_swap_visualizer/
+push_swap_tester/

@@ -1,6 +1,6 @@
 NAME	=	libft.a
 
-# Compiler and flags
+# Comt_piler and flags
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 RM		=	rm -f

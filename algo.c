@@ -6,16 +6,16 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/16 14:57:36 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:03:24 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	find_next_small(t_ps **head)
+size_t	find_next_small(t_pile **head)
 {
 	size_t	i;
-	t_ps	*tmp;
+	t_pile	*tmp;
 
 	i = -1;
 	tmp = (*head);
@@ -28,9 +28,9 @@ size_t	find_next_small(t_ps **head)
 	return (i);
 }
 
-int	look_rest_a(t_ps **head, size_t last)
+int	look_rest_a(t_pile **head, size_t last)
 {
-	t_ps	*tmp;
+	t_pile	*tmp;
 
 	tmp = (*head);
 	while (tmp)
@@ -50,36 +50,25 @@ int	look_rest_a(t_ps **head, size_t last)
 	return (0);
 }
 
-void	bot_or_up_a(t_ps **a, t_ps **b, int i)
+void	move_piles(t_pile **a, t_pile **b, int i)
 {
 	size_t			look;
 	size_t			size_node;
-	t_ps			*tmp;
-	static size_t	range = 20;
+	t_pile			*tmp;
+	static size_t	range = 15;
 
 	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
 	size_node = node_len((*a)) / 2;
-	if (look <= size_node)
-	{
-		if ((*b) && tmp && (*b)->i > tmp->i && \
-		(*b)->i < range < range && tmp->i < range)
-			rr(a, b);
-		else
-			rr(a, NULL);
-	}
+	if ((*b) && tmp && (*b)->i > tmp->i && \
+	(*b)->i < range < range && tmp->i < range)
+		rr(a, b);
 	else
-	{
-		if ((*b) && tmp && (*b)->i < tmp->i && \
-		(*b)->i < range && tmp->i < range)
-			rrr(a, b);
-		else
-			rrr(a, NULL);
-	}
+		rr(a, NULL);
 	range++;
 }
 
-void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last)
+void	make_bucket(t_pile **a, t_pile **b, int bucket, size_t last)
 {
 	size_t	i;
 
@@ -94,6 +83,6 @@ void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last)
 			i = find_next_small(a);
 			continue ;
 		}
-		bot_or_up_a(a, b, i);
+		move_piles(a, b, i);
 	}
 }

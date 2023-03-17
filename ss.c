@@ -6,17 +6,17 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:07:23 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 14:10:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 09:59:58 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	s_p(t_ps **node)
+void	s_p(t_pile **node)
 {
-	t_ps	*first;
-	t_ps	*mid;
-	t_ps	*last;
+	t_pile	*first;
+	t_pile	*mid;
+	t_pile	*last;
 
 	if (*node && (*node)->next)
 	{
@@ -36,7 +36,7 @@ sb (swap b ) : Intervertit les 2 premiers éléments au sommet de la pile b.
 Ne fait rien s’il n’y en a qu’un ou aucun.
 ss : sa et sb en même temps.
 */
-void	ss(t_ps **a, t_ps **b)
+void	ss(t_pile **a, t_pile **b)
 {
 	if (a && b)
 	{

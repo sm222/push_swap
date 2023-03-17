@@ -6,15 +6,15 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/16 14:57:24 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:33:18 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	pile_set_index(t_ps **head)
+size_t	t_pile_set_index(t_pile **head)
 {
-	t_ps		*tmp;
+	t_pile		*tmp;
 	long		small;
 	size_t		i;
 
@@ -42,7 +42,7 @@ size_t	pile_set_index(t_ps **head)
 
 // ac / 5
 
-void	find_next_b(t_ps **b, size_t i)
+void	find_next_b(t_pile **b, size_t i)
 {
 	size_t	look;
 	size_t	size_node;
@@ -50,32 +50,14 @@ void	find_next_b(t_ps **b, size_t i)
 	look = find_node_i((*b), i);
 	size_node = node_len((*b)) / 2;
 	if (look <= size_node)
-	{
 		rr(NULL, b);
-	}
 	else
-	{
 		rrr(NULL, b);
-	}
 }
 
-size_t	find_next_big(t_ps **head)
-{
-	size_t	i;
-	t_ps	*tmp;
 
-	i = 0;
-	tmp = (*head);
-	while (tmp)
-	{
-		if (i < tmp->i)
-			i = tmp->i;
-		tmp = tmp->next;
-	}
-	return (i);
-}
 
-void	b_to_a(t_ps **a, t_ps **b, size_t size)
+void	b_to_a(t_pile **a, t_pile **b, size_t size)
 {
 	size = find_next_big((b));
 	while (node_len(*b))
@@ -93,27 +75,28 @@ void	b_to_a(t_ps **a, t_ps **b, size_t size)
 
 int	main(int ac, char **av)
 {
-	t_piles		piles;
-	int			i;
-	size_t		item;
+	t_piles		t_piles;
+	t_data		data;
 
-	i = 1;
-	piles.a = NULL;
-	piles.b = NULL;
+	data.i = 1;
+	t_piles.a = NULL;
+	t_piles.b = NULL;
+	if (ac <= 2)
+		return (0);
 	if (ac == 2)
-		av = ft_split(av[i--], ' ');
-	while (av[i])
-		make_node_last(&piles.a, ft_atoi(av[i++]));
-	item = pile_set_index(&piles.a);
-	if (item <= 5)
-		small_algo(&piles, item);
-	else if (item < 100)
-		make_bucket(&piles.a, &piles.b, 1, item);
-	else if (item < 300)
-		make_bucket(&piles.a, &piles.b, item / 6, item);
+		data.numbers = ft_split(av[1], ' ');
+	while (av[data.i])
+		make_node_last(&t_piles.a, ft_atoi(av[data.i++]));
+	data.item = t_pile_set_index(&t_piles.a);
+	if (data.item <= 5)
+		small_algo(&t_piles, data.item);
+	else if (data.item < 100)
+		make_bucket(&t_piles.a, &t_piles.b, 1, data.item);
+	else if (data.item < 300)
+		make_bucket(&t_piles.a, &t_piles.b, data.item / 11, data.item);
 	else
-		make_bucket(&piles.a, &piles.b, item / 16, item);
-	b_to_a(&piles.a, &piles.b, item);
-	free_node(&piles.a, &piles.b);
+		make_bucket(&t_piles.a, &t_piles.b, data.item / 16, data.item);
+	b_to_a(&t_piles.a, &t_piles.b, data.item);
+	free_node(t_piles.a, t_piles.b);
 	return (0);
 }

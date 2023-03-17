@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:40:21 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/16 17:54:16 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:16:11 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	item_3(t_ps **a)
+void	item_3(t_pile **a)
 {
 	if ((*a)->i > (*a)->next->i && (*a)->i < (*a)->next->next->i && \
 	(*a)->next->i < (*a)->next->next->i)
@@ -31,7 +31,7 @@ void	item_3(t_ps **a)
 		rrr(a, NULL);
 }
 
-void	item_4_or_5(t_piles *piles, size_t item)
+void	item_4_or_5(t_piles *t_piles, size_t item)
 {
 	size_t	size_node;
 	size_t	look;
@@ -40,34 +40,34 @@ void	item_4_or_5(t_piles *piles, size_t item)
 	i = 1;
 	while (i < item - 2)
 	{	
-		look = find_node_i((piles)->a, i);
-		size_node = node_len((piles)->a) / 2;
-		while ((piles)->a->i != i)
+		look = find_node_i((t_piles)->a, i);
+		size_node = node_len((t_piles)->a) / 2;
+		while ((t_piles)->a->i != i)
 		{
 			if (look < size_node / 2)
-				rr(&piles->a, NULL);
+				rr(&t_piles->a, NULL);
 			else
-				rrr(&piles->a, NULL);
+				rrr(&t_piles->a, NULL);
 		}
-		if (look_rest_a(&piles->a, item))
+		if (look_rest_a(&t_piles->a, item))
 			return ;
-		pp(&piles->a, &piles->b, "pb");
+		pp(&t_piles->a, &t_piles->b, "pb");
 		i++;
 	}
 }
 
-void	small_algo(t_piles *piles, size_t item)
+void	small_algo(t_piles *t_piles, size_t item)
 {
 	if (item == 2)
 	{
-		if (piles->a->i > piles->a->next->i)
-			ss(&piles->a, NULL);
+		if (t_piles->a->i > t_piles->a->next->i)
+			ss(&t_piles->a, NULL);
 	}
-	if (item == 3)
-		item_3(&piles->a);
+	else if (item == 3)
+		item_3(&t_piles->a);
 	else if (item <= 6)
 	{
-		item_4_or_5(piles, item);
-		item_3(&piles->a);
+		item_4_or_5(t_piles, item);
+		item_3(&t_piles->a);
 	}
 }

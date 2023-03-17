@@ -6,16 +6,16 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:22:05 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/12 12:54:23 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 09:58:47 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	r_top(t_ps **p)
+int	r_top(t_pile **p)
 {
-	t_ps	*new_last;
-	t_ps	*new_top;
+	t_pile	*new_last;
+	t_pile	*new_top;
 
 	if ((*p) && (*p)->next)
 	{
@@ -29,7 +29,7 @@ int	r_top(t_ps **p)
 	return (0);
 }
 
-void	rrr(t_ps **a, t_ps **b)
+void	rrr(t_pile **a, t_pile **b)
 {
 	if (a && b)
 	{

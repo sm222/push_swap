@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/16 17:48:53 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:41:39 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,55 @@
 
 # include "lib_ft/libft.h"
 # include <limits.h>
-# include <stdbool.h>
 
 typedef struct s_ps
 {
+	size_t		i;
 	int			data;
 	int			chek;
-	size_t		i;
 	struct s_ps	*next;
 
-}	t_ps;
+}	t_pile;
 
 typedef struct s_piles
 {
-	t_ps	*a;
-	t_ps	*b;
+	t_pile	*a;
+	t_pile	*b;
 
 }	t_piles;
 
-size_t	node_len(t_ps *node);
-void	ss(t_ps **a, t_ps **b);
-void	pa(t_ps **a, t_ps **b);
-void	pb(t_ps **a, t_ps **b);
-void	rr(t_ps **a, t_ps **b);
-int		r_r(t_ps **p);
-t_ps	*return_last_node(t_ps **head);
-t_ps	*return_index_node(t_ps **head, size_t i);
-void	rrr(t_ps **a, t_ps **b);
-void	print_pile(t_ps	*data, char name);
-void	pp(t_ps **src, t_ps **dst, char *cmd);
-t_ps	*make_node(int data);
-void	make_node_last(t_ps **node, int data);
-void	bot_or_up_a(t_ps **a, t_ps **b, int i);
-size_t	find_node_i(t_ps *head, size_t i);
-void	make_bucket(t_ps **a, t_ps **b, int bucket, size_t last);
-void	free_node(t_ps **a, t_ps **b);
+typedef struct s_data
+{
+	int			i;
+	size_t		item;
+	char		**numbers;
+}	t_data;
+
+//instructuon
+
+int		r_r(t_pile **p);
+void	ss(t_pile **a, t_pile **b);
+void	rr(t_pile **a, t_pile **b);
+void	rrr(t_pile **a, t_pile **b);
+void	pp(t_pile **src, t_pile **dst, char *cmd);
+
+//utils
+t_pile	*make_node(int data);
+size_t	node_len(t_pile *node);
+void	free_node(t_pile *a, t_pile *b);
+void	free_node(t_pile *a, t_pile *b);
+t_pile	*return_last_node(t_pile **head);
+size_t	find_node_i(t_pile *head, size_t i);
+void	make_node_last(t_pile **node, int data);
+t_pile	*return_index_node(t_pile **head, size_t i);
+
+//algo
+size_t	find_next_big(t_pile **head);
 void	small_algo(t_piles *piles, size_t item);
-int		look_rest_a(t_ps **head, size_t last);
+int		look_rest_a(t_pile **head, size_t last);
+void	move_piles(t_pile **a, t_pile **b, int i);
+void	make_bucket(t_pile **a, t_pile **b, int bucket, size_t last);
+
+void	print_pile(t_pile	*data, char name);
 
 #endif 

@@ -12,7 +12,7 @@ NAME	=	push_swap
 LIBFT	=	libft.a
 LDIR	=	lib_ft/
 
-# Compiler and flags
+# Comt_piler and flags
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 RM	=	rm	-f
@@ -50,13 +50,15 @@ libft:
 # Generates output file
 # Removes objects
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(LDIR)*.o
+	@$(RM) $(OBJS)
+	@$(make) -C $(LDIR) clean
+	@$(RM) $(LDIR)*.o
 	@echo $(shell clear) $(GRN) clean *.o$(RESET)
 
 # Removes objects and executables
 fclean: clean
 	@$(RM) $(NAME)
+	@$(make) -C $(LDIR) fclean
 	@$(RM) $(LDIR)$(LIBFT)
 	@echo $(shell clear) $(GRN) clean all$(RESET)
 

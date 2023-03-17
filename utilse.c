@@ -6,15 +6,15 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/16 10:30:38 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:34:02 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps	*return_index_node(t_ps **head, size_t i)
+t_pile	*return_index_node(t_pile **head, size_t i)
 {
-	t_ps	*tmp;
+	t_pile	*tmp;
 	size_t	size;
 
 	if (head && *head)
@@ -30,9 +30,9 @@ t_ps	*return_index_node(t_ps **head, size_t i)
 	return (NULL);
 }
 
-t_ps	*return_last_node(t_ps **head)
+t_pile	*return_last_node(t_pile **head)
 {
-	t_ps	*tmp;
+	t_pile	*tmp;
 	size_t	size;
 
 	if (!head)
@@ -48,10 +48,10 @@ t_ps	*return_last_node(t_ps **head)
 	return (NULL);
 }
 
-size_t	find_node_i(t_ps *head, size_t i)
+size_t	find_node_i(t_pile *head, size_t i)
 {
 	size_t	index;
-	t_ps	*tmp;
+	t_pile	*tmp;
 
 	tmp = head;
 	index = 0;
@@ -63,26 +63,4 @@ size_t	find_node_i(t_ps *head, size_t i)
 		index++;
 	}
 	return (0);
-}
-
-void	free_node(t_ps **a, t_ps **b)
-{
-	t_ps	*tmp;
-	t_ps	*next;
-
-	tmp = (*a);
-	while (tmp)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
-	tmp = (*b);
-	while (tmp)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
-	exit(0);
 }

@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:58:58 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/09 11:01:28 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/17 09:58:47 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rr(t_ps **a, t_ps **b)
+void	rr(t_pile **a, t_pile **b)
 {
 	if (a && b)
 	{
@@ -31,10 +31,10 @@ void	rr(t_ps **a, t_ps **b)
 	}
 }
 
-int	r_r(t_ps **p)
+int	r_r(t_pile **p)
 {
-	t_ps	*new_top;
-	t_ps	*last;
+	t_pile	*new_top;
+	t_pile	*last;
 
 	if (*p && (*p)->next)
 	{

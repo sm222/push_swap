@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 13:11:31 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/19 10:59:45 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	move_piles(t_pile **a, t_pile **b, int i)
 	size_t			look;
 	size_t			size_node;
 	t_pile			*tmp;
-	static size_t	range = 15;
+	static size_t	range = 20;
 
 	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
@@ -90,7 +90,7 @@ void	make_bucket(t_pile **a, t_pile **b, int bucket, size_t last)
 	{
 		if (look_rest_a(a, last))
 			break ;
-		if ((*a)->i >= (size_t)i && (*a)->i <= (size_t)i + bucket + 5)
+		if ((*a)->i >= (size_t)i && (*a)->i <= (size_t)i + bucket)
 		{
 			pp(a, b, "pb");
 			i = find_next_small(a);

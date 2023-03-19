@@ -6,11 +6,27 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 17:49:00 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:43:48 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_arr(char ***data, int exit_f)
+{
+	size_t	i;
+
+	i = 0;
+	while (data[i])
+		ft_double_sfree((void **)data[i++]);
+	free(data);
+	if (exit_f)
+	{
+		if (exit_f == 2)
+			ft_putendl_fd("error\n", 2);
+		exit(1);
+	}
+}
 
 size_t	t_pile_set_index(t_pile **head)
 {
@@ -56,62 +72,96 @@ void	b_to_a(t_pile **a, t_pile **b, size_t size)
 	}
 }
 
-int	look_for_number(char **numbers)
+int	while_number(char **data)
 {
-	size_t	y;
-	size_t	x;
+	size_t	i;
+	size_t	j;
 
-	y = 0;
-	while (numbers[y])
+	i = 0;
+	j = 0;
+	while (data[i])
 	{
-		x = 0;
-		while (numbers[y][x])
+		j = 0;
+		while (data[i][j])
 		{
-			if (!ft_isdigit(numbers[y][x]))
-				return (0);
+			if (ft_isdigit(data[i][j]))
+				j++;
+			else if (data[i][j] == '-' && ft_isdigit(data[i][j + 1]))
+				j++;
 			else
-				x++;
+				return (0);
 		}
-		y++;
+		i++;
 	}
 	return (1);
 }
 
-void	verif(t_data *data, int ac, char ***av)
+char	***verif(t_data *data, int ac, char **av)
 {
-	if (ac < 2)
+	char	***holder;
+	size_t	i;
+
+	i = 1;
+	holder = NULL;
+	if (ac < 3)
 		exit(0);
 	data->i = 1;
-	data->numbers = ft_split((*av)[1], ' ');
-	if (ac == 2)
+	if (ac >= 2)
 	{
-		(*av) = data->numbers;
-		data->i--;
+		holder = ft_calloc(ft_double_strlen(av), sizeof(char **));
+		while (i < ft_double_strlen(av))
+		{
+			holder[i - 1] = ft_split(av[i], ' ');
+			i++;
+		}
+	}
+	i = 0;
+	while (holder[i])
+		if (while_number(holder[i++]) == 0)
+			free_arr(holder, 2);
+	return (holder);
+}
+
+void	start_data(t_piles *piles, char ***number)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (number[i])
+	{
+		j = 0;
+		while (number[i][j])
+		{
+			make_node_last(&piles->a, ft_atoi(number[i][j++]));
+			if (piles->a == NULL)
+				free_arr(number, 2);
+		}
+		i++;
 	}
 }
 
 int	main(int ac, char **av)
 {
-	t_piles		t_piles;
+	t_piles		piles;
 	t_data		data;
+	char		***numbers;
 
-	t_piles.a = NULL;
-	t_piles.b = NULL;
-	verif(&data, ac, &av);
-	while (av[data.i])
-	{
-		make_node_last(&t_piles.a, ft_atoi(av[data.i++]));
-	}
-	data.item = t_pile_set_index(&t_piles.a);
-	if (data.item <= 5)
-		small_algo(&t_piles, data.item);
+	piles.a = NULL;
+	piles.b = NULL;
+	numbers = verif(&data, ac, av);
+	start_data(&piles, numbers);
+	data.item = t_pile_set_index(&piles.a);
+	if (data.item <= 10)
+		small_algo(&piles, data.item);
 	else if (data.item < 100)
-		make_bucket(&t_piles.a, &t_piles.b, 1, data.item);
+		make_bucket(&piles.a, &piles.b, 1, data.item);
 	else if (data.item < 300)
-		make_bucket(&t_piles.a, &t_piles.b, data.item / 11, data.item);
+		make_bucket(&piles.a, &piles.b, data.item / 7, data.item);
 	else
-		make_bucket(&t_piles.a, &t_piles.b, data.item / 16, data.item);
-	b_to_a(&t_piles.a, &t_piles.b, data.item);
-	free_node(t_piles.a, t_piles.b);
+		make_bucket(&piles.a, &piles.b, data.item / 13, data.item);
+	b_to_a(&piles.a, &piles.b, data.item);
+	free_node(piles.a, piles.b);
+	free_arr(numbers, 1);
 	return (0);
 }

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cpy_double_char.c                               :+:      :+:    :+:   */
+/*   ft_double_strlen.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 13:53:12 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/19 16:03:39 by anboisve         ###   ########.fr       */
+/*   Created: 2023/03/19 14:24:15 by anboisve          #+#    #+#             */
+/*   Updated: 2023/03/19 14:27:03 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_cpy_double_char(char **str)
+size_t	ft_double_strlen(char **str)
 {
-	int		i;
-	int		j;
-	char	**new;
+	size_t	len;
 
-	j = 0;
-	new = NULL;
-	if (!str)
-		return (NULL);
-	i = ft_double_strlen(str);
-	new = ft_calloc(i + 1, sizeof(char *));
-	while (j < i)
-	{
-		new[j] = ft_strdup(str[j]);
-		j++;
-	}
-	return (new);
+	len = 0;
+	while (str && str[len])
+		len++;
+	return (len);
 }

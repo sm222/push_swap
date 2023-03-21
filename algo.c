@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:27:08 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/19 10:59:45 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:53:39 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ void	move_piles(t_pile **a, t_pile **b, int i)
 	size_t			look;
 	size_t			size_node;
 	t_pile			*tmp;
-	static size_t	range = 20;
+	static size_t	range = 0;
 
 	tmp = return_last_node(b);
 	look = find_node_i((*a), i);
 	size_node = node_len((*a)) / 2;
 	if ((*b) && tmp && (*b)->i > tmp->i && \
-	(*b)->i < range < range && tmp->i < range)
+	(*b)->i < range && tmp->i < range)
 		rr(a, b);
 	else
 		rr(a, NULL);

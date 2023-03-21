@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 13:12:18 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:45:06 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,4 @@ void	make_bucket(t_pile **a, t_pile **b, int bucket, size_t last);
 
 void	print_pile(t_pile	*data, char name);
 
-#endif 
+#endif

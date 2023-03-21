@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:40:21 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/17 10:16:11 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/21 09:53:56 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	item_4_or_5(t_piles *t_piles, size_t item)
 
 void	small_algo(t_piles *t_piles, size_t item)
 {
+	if (item == 1)
+		return ;
 	if (item == 2)
 	{
 		if (t_piles->a->i > t_piles->a->next->i)
@@ -65,7 +67,7 @@ void	small_algo(t_piles *t_piles, size_t item)
 	}
 	else if (item == 3)
 		item_3(&t_piles->a);
-	else if (item <= 6)
+	else if (item >= 4)
 	{
 		item_4_or_5(t_piles, item);
 		item_3(&t_piles->a);

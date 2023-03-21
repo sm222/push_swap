@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/19 17:43:48 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/21 09:57:09 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	free_arr(char ***data, int exit_f)
 	size_t	i;
 
 	i = 0;
-	while (data[i])
+	while (data && data[i])
 		ft_double_sfree((void **)data[i++]);
-	free(data);
+	if (data)
+		free(data);
 	if (exit_f)
 	{
 		if (exit_f == 2)
-			ft_putendl_fd("error\n", 2);
+			ft_putendl_fd("error", 2);
 		exit(1);
 	}
 }
@@ -100,20 +101,19 @@ char	***verif(t_data *data, int ac, char **av)
 {
 	char	***holder;
 	size_t	i;
+	size_t	j;
 
 	i = 1;
+	j = 0;
 	holder = NULL;
-	if (ac < 3)
+	if (ac == 1)
 		exit(0);
 	data->i = 1;
-	if (ac >= 2)
+	holder = ft_calloc(ft_double_strlen(av) + 1, sizeof(char **));
+	while (i < ft_double_strlen(av) + 1)
 	{
-		holder = ft_calloc(ft_double_strlen(av), sizeof(char **));
-		while (i < ft_double_strlen(av))
-		{
-			holder[i - 1] = ft_split(av[i], ' ');
-			i++;
-		}
+		holder[j++] = ft_split(av[i], ' ');
+		i++;
 	}
 	i = 0;
 	while (holder[i])
@@ -126,19 +126,26 @@ void	start_data(t_piles *piles, char ***number)
 {
 	size_t	i;
 	size_t	j;
+	size_t	item;
 
 	i = 0;
+	item = 0;
 	while (number[i])
 	{
 		j = 0;
 		while (number[i][j])
 		{
 			make_node_last(&piles->a, ft_atoi(number[i][j++]));
-			if (piles->a == NULL)
+			item++;
+			if (node_len(piles->a) != item)
+			{
+				free_node(piles->a, NULL);
 				free_arr(number, 2);
+			}
 		}
 		i++;
 	}
+	free_arr(number, 0);
 }
 
 int	main(int ac, char **av)
@@ -152,7 +159,7 @@ int	main(int ac, char **av)
 	numbers = verif(&data, ac, av);
 	start_data(&piles, numbers);
 	data.item = t_pile_set_index(&piles.a);
-	if (data.item <= 10)
+	if (data.item <= 11)
 		small_algo(&piles, data.item);
 	else if (data.item < 100)
 		make_bucket(&piles.a, &piles.b, 1, data.item);
@@ -162,6 +169,5 @@ int	main(int ac, char **av)
 		make_bucket(&piles.a, &piles.b, data.item / 13, data.item);
 	b_to_a(&piles.a, &piles.b, data.item);
 	free_node(piles.a, piles.b);
-	free_arr(numbers, 1);
 	return (0);
 }

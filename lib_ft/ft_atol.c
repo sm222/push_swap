@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 10:55:32 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/21 09:49:58 by anboisve         ###   ########.fr       */
+/*   Created: 2023/03/21 13:08:38 by anboisve          #+#    #+#             */
+/*   Updated: 2023/03/21 13:54:52 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	print_pile(t_pile	*data, char name)
+long	ft_atol(const char *s)
 {
-	t_pile	*tmp;
+	size_t	i;
+	int		flp;
+	long	val;
 
-	tmp = data;
-	ft_printf("%c size = %d\n", name, node_len(tmp));
-	while (tmp)
+	if (!s)
+		return (0);
+	val = 0;
+	flp = 1;
+	i = 0;
+	while ((s[i] >= '\t' && s[i] <= '\r') || s[i] == ' ')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		ft_printf("%d %d\n", tmp->data, tmp->i);
-		tmp = tmp->next;
+		if (s[i] == '-')
+			flp *= -1;
+		i++;
 	}
-	ft_printf("\n");
+	while (s[i] >= '0' && s[i] <= '9')
+		val = val * 10 + (s[i++] - '0');
+	return (val * flp);
 }

@@ -72,16 +72,38 @@ re: fclean all
 
 test:
 	@echo "10 tests/ 0 - 500"
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
-	@./push_swap `ruby -e "puts (0..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` | wc -l
 	@echo "/	/	/	/	/"
-
+	@echo "10 tests/ 0 - 100"
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"` | wc -l
+	@echo "/	/	/	/	/"
+	@echo "10 tests/ 0 - 3"
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
+	@./push_swap `ruby -e "puts (0..2).to_a.shuffle.join(' ')"` | wc -l
 .PHONY: all libft

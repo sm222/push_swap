@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/23 11:08:01 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:26:33 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,4 @@ size_t	find_node_i(t_pile *head, size_t i)
 		index++;
 	}
 	return (0);
-}
-
-int	while_number(char **data)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (data[i])
-	{
-		j = 0;
-		while (data[i][j])
-		{
-			if (ft_isdigit(data[i][j]))
-				j++;
-			else if (data[i][j] == '-' && ft_isdigit(data[i][j + 1]))
-				j++;
-			else
-				return (0);
-		}
-		i++;
-	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/23 11:22:43 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:00:23 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,11 @@ int	main(int ac, char **av)
 	piles.b = NULL;
 	numbers = verif(&data, ac, av);
 	start_data(&piles, numbers);
+	if (look_double(&piles.a) == 0)
+	{
+		free_node(piles.a, piles.b);
+		exit (ft_putendl_fd("error", 2));
+	}
 	data.item = t_pile_set_index(&piles.a);
 	if (data.item <= 11)
 		small_algo(&piles, data.item);

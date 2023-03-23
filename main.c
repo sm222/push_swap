@@ -6,28 +6,11 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/21 09:57:09 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:22:43 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_arr(char ***data, int exit_f)
-{
-	size_t	i;
-
-	i = 0;
-	while (data && data[i])
-		ft_double_sfree((void **)data[i++]);
-	if (data)
-		free(data);
-	if (exit_f)
-	{
-		if (exit_f == 2)
-			ft_putendl_fd("error", 2);
-		exit(1);
-	}
-}
 
 size_t	t_pile_set_index(t_pile **head)
 {
@@ -73,30 +56,6 @@ void	b_to_a(t_pile **a, t_pile **b, size_t size)
 	}
 }
 
-int	while_number(char **data)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (data[i])
-	{
-		j = 0;
-		while (data[i][j])
-		{
-			if (ft_isdigit(data[i][j]))
-				j++;
-			else if (data[i][j] == '-' && ft_isdigit(data[i][j + 1]))
-				j++;
-			else
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
 char	***verif(t_data *data, int ac, char **av)
 {
 	char	***holder;
@@ -135,6 +94,9 @@ void	start_data(t_piles *piles, char ***number)
 		j = 0;
 		while (number[i][j])
 		{
+			if (ft_atol(number[i][j]) > INT_MAX || ft_atol(number[i][j]) \
+			< INT_MIN || ft_strlen(number[i][j]) > 11)
+				free_arr(number, 2);
 			make_node_last(&piles->a, ft_atoi(number[i][j++]));
 			item++;
 			if (node_len(piles->a) != item)

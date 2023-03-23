@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:07:18 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/19 14:28:08 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:29:39 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		ft_putendl_fd(char *s, int fd);
 
 //conversion							//
 
+long	ft_atol(const char *s);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);

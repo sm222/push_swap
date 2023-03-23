@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/20 12:45:06 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:08:24 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	pp(t_pile **src, t_pile **dst, char *cmd);
 //utils
 t_pile	*make_node(int data);
 size_t	node_len(t_pile *node);
+int		while_number(char **data);
 void	free_node(t_pile *a, t_pile *b);
 void	free_node(t_pile *a, t_pile *b);
 t_pile	*return_last_node(t_pile **head);
+void	free_arr(char ***data, int exit_f);
 size_t	find_node_i(t_pile *head, size_t i);
 void	make_node_last(t_pile **node, int data);
 t_pile	*return_index_node(t_pile **head, size_t i);

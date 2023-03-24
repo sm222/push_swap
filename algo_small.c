@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:40:21 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/21 09:53:56 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:05:31 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	item_4_or_5(t_piles *t_piles, size_t item)
 		size_node = node_len((t_piles)->a) / 2;
 		while ((t_piles)->a->i != i)
 		{
-			if (look < size_node / 2)
+			if (look <= size_node / 2)
 				rr(&t_piles->a, NULL);
 			else
 				rrr(&t_piles->a, NULL);

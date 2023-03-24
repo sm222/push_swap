@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:34:54 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/23 16:13:31 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/24 14:13:06 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_data
 {
 	int			i;
 	size_t		item;
-	char		**numbers;
+	char		***numbers;
 }	t_data;
 
 //instructuon

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:20:26 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/23 17:00:23 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/24 14:16:22 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,15 @@ int	main(int ac, char **av)
 {
 	t_piles		piles;
 	t_data		data;
-	char		***numbers;
 
 	piles.a = NULL;
 	piles.b = NULL;
-	numbers = verif(&data, ac, av);
-	start_data(&piles, numbers);
+	data.numbers = verif(&data, ac, av);
+	start_data(&piles, data.numbers);
 	if (look_double(&piles.a) == 0)
 	{
 		free_node(piles.a, piles.b);
-		exit (ft_putendl_fd("error", 2));
+		exit(ft_putendl_fd("Error", 2));
 	}
 	data.item = t_pile_set_index(&piles.a);
 	if (data.item <= 11)
@@ -133,7 +132,7 @@ int	main(int ac, char **av)
 	else if (data.item < 300)
 		make_bucket(&piles.a, &piles.b, data.item / 7, data.item);
 	else
-		make_bucket(&piles.a, &piles.b, data.item / 13, data.item);
+		make_bucket(&piles.a, &piles.b, data.item / 15, data.item);
 	b_to_a(&piles.a, &piles.b, data.item);
 	free_node(piles.a, piles.b);
 	return (0);

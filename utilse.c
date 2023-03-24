@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 09:43:28 by anboisve          #+#    #+#             */
-/*   Updated: 2023/03/23 14:26:33 by anboisve         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:33:48 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_arr(char ***data, int exit_f)
 	if (exit_f)
 	{
 		if (exit_f == 2)
-			ft_putendl_fd("error", 2);
+			ft_putendl_fd("Error", 2);
 		exit(1);
 	}
 }
